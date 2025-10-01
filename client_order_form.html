@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>طلب عميل - ملبسي</title>
+    <style>
+        body {
+            font-family: 'Cairo', Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 850px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #ccc;
+            padding: 28px 40px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            margin-bottom: 15px;
+        }
+        .logo-circle {
+            background: #1a237e;
+            color: #fff;
+            font-size: 32px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        h2 {
+            text-align: right;
+            color: #3c4251;
+            margin-bottom: 28px;
+        }
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 500;
+            color: #222;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 7px 9px;
+            margin-bottom: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        .flex-row {
+            display: flex;
+            gap: 18px;
+        }
+        .flex-col {
+            flex: 1;
+        }
+        .gender-options, .size-options, .supplements, .ironing-options {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 14px;
+        }
+        .color-pickers {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 14px;
+        }
+        .color-holder {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .img-upload {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 14px;
+        }
+        .print-btn {
+            background: #1a237e;
+            color: #fff;
+            border: none;
+            padding: 11px 28px;
+            border-radius: 7px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        @media print {
+            .print-btn, .logo { display: none; }
+            body { background: #fff; }
+            .container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-circle">م م</div>
+            <span style="font-size: 22px; font-weight: bold; color: #1a237e;">ملبسي</span>
+        </div>
+        <h2>نموذج بيانات عميل لصناعة الملابس</h2>
+        <form id="clientForm">
+            <label>اسم العميل:</label>
+            <input type="text" name="client_name" required>
+
+            <label>تاريخ التعاقد:</label>
+            <input type="date" name="contract_date" required>
+
+            <label>اسم المنتج:</label>
+            <input type="text" name="product_name" required>
+
+            <label>الجنس:</label>
+            <div class="gender-options">
+                <label><input type="radio" name="gender" value="رجالي" required> رجالي</label>
+                <label><input type="radio" name="gender" value="حريمي"> حريمي</label>
+                <label><input type="radio" name="gender" value="اطفال"> أطفال</label>
+            </div>
+
+            <label>القياسات المطلوبة:</label>
+            <div class="size-options">
+                <label><input type="radio" name="size" value="S" required> S</label>
+                <label><input type="radio" name="size" value="M"> M</label>
+                <label><input type="radio" name="size" value="L"> L</label>
+                <label><input type="radio" name="size" value="XL"> XL</label>
+            </div>
+
+            <label>الخامة المطلوبة:</label>
+            <input type="text" name="material" required>
+
+            <label>الألوان المطلوبة:</label>
+            <div class="color-pickers">
+                <div class="color-holder">
+                    <input type="color" name="color1" value="#ee4422">
+                    <input type="text" name="color1_name" placeholder="اسم اللون أو كوده">
+                </div>
+                <div class="color-holder">
+                    <input type="color" name="color2" value="#2299ee">
+                    <input type="text" name="color2_name" placeholder="اسم اللون أو كوده">
+                </div>
+                <div class="color-holder">
+                    <input type="color" name="color3" value="#22ee99">
+                    <input type="text" name="color3_name" placeholder="اسم اللون أو كوده">
+                </div>
+            </div>
+
+            <label>المكملات:</label>
+            <div class="supplements">
+                <label><input type="checkbox" name="supplements" value="أزرار"> أزرار</label>
+                <label><input type="checkbox" name="supplements" value="تيكن"> تيكن</label>
+            </div>
+
+            <label>العدد المطلوب إنتاجه:</label>
+            <input type="number" name="quantity" min="1" required>
+
+            <div class="flex-row">
+                <div class="flex-col">
+                    <label>موعد تسليم العينة:</label>
+                    <input type="date" name="sample_date" required>
+                </div>
+                <div class="flex-col">
+                    <label>موعد استلام المنتج:</label>
+                    <input type="date" name="delivery_date" required>
+                </div>
+            </div>
+
+            <label>صور المنتج:</label>
+            <div class="img-upload">
+                <div class="flex-col">
+                    <label>صورة أمامية:</label>
+                    <input type="file" name="front_image" accept="image/*">
+                </div>
+                <div class="flex-col">
+                    <label>صورة خلفية:</label>
+                    <input type="file" name="back_image" accept="image/*">
+                </div>
+            </div>
+
+            <label>شكل الكي والتعبئة:</label>
+            <div class="ironing-options">
+                <label><input type="radio" name="ironing" value="تطبيق" required> تطبيق</label>
+                <label><input type="radio" name="ironing" value="شماعة"> شماعة</label>
+            </div>
+
+            <label>مكان التسليم:</label>
+            <input type="text" name="delivery_place" required>
+            
+            <button type="button" class="print-btn" onclick="window.print()">طباعة النموذج</button>
+        </form>
+    </div>
+</body>
+</html>
